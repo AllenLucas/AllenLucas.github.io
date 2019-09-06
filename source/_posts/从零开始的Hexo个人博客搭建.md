@@ -13,27 +13,31 @@ tags:
 ## 环境准备
 #### 安装Git
 [git官网][2]下载并执行即可完成安装。
+
 #### 安装Node.js
 在Windows环境下安装[Node.js][3]非常简单，仅须下载安装文件并执行即可完成安装。
 #### 安装hexo
 利用npm命令即可安装。（在任意位置点击鼠标右键，选择Git bash）
-```npm install -g hexo```
+`npm install -g hexo`
+
 ***问题***
 
   - npm ERR!registry error parsing json错误
 
 可能需要设置npm代理，执行命令
-```npm config set registry  http://registry.cnpmjs.org```
+`npm config set registry  http://registry.cnpmjs.org`
 
  - hexo:command not found
     删除刚刚安装的npm目录，重新执行命令：
-```npm install -g hexo```
+`npm install -g hexo`
 来安装hexo。
 #### 创建hexo文件夹
 安装完成后，在你喜欢的文件夹下（如：H:\hexo），执行以下指令（在H:\hexo内点击鼠标右键，选择Git bash），Hexo即会自动在目标文件夹建立网站所需要的所有文件。
-```hexo init```
+`hexo init`
+
 #### 安装依赖包
-```npm install```
+`npm install`
+
 #### 本地查看
 现在我们已经搭建起本地的hexo博客了，执行以下命令（在H:\hexo），然后到浏览器输入localhost:4000看看。
 ```
@@ -44,10 +48,10 @@ hexo server
 ***问题***
 
  - 执行hexo server提示找不到该指令
-  解决办法：
-  在Hexo 3.0后server被单独出来了，需要安装server，安装的命令如下：
-  ```npm install hexo -server --save```
-  安装此server后再试，问题解决
+    解决办法：
+    在Hexo 3.0后server被单独出来了，需要安装server，安装的命令如下：
+    `npm install hexo -server --save`
+    安装此server后再试，问题解决
   ## Github创建博客
   #### 创建页面仓库
   这个仓库的名字需要和你的账号对应，格式：yourname.github.io
@@ -57,18 +61,27 @@ hexo server
   #### 查看SSH
   SSH公钥默认储存在账户的主目录下的~/.ssh目录。
   进如.ssh目录下，命令行：
-  ```ls```
+  `ls`
   查看，如果返回something和something.pub，说明已经有SSH公钥。
+
   #### 生成SSH公钥
   没有的话，生成，还是在.ssh目录下，命令行：
-  ssh-keygen -t rsa -C "你的邮箱地址"
+
+`  ssh-keygen -t rsa -C "你的邮箱地址"`
+
   按3个回车，密码为空。
   在 C:\Users\Administrator.ssh 下，得到两个文件 id_rsa 和 id_rsa.pub。
+
   #### 在Github上添加SSH密钥
   打开id_rsa.pub，复制全文到[https://github.com/settings/ssh][5]，Add SSH key粘贴进去
   ##hexo使用
 
+
+
   #### 目录结构
+
+
+
 ```
 ├── .deploy       #需要部署的文件
 ├── node_modules  #Hexo插件
@@ -81,7 +94,12 @@ hexo server
 ├── _config.yml   #全局配置文件
 └── package.json
 ```
+
+
 全局配置_config.yml
+
+
+
 ```
 # Hexo Configuration
 # Docs: http://hexo.io/docs/configuration.html
@@ -154,12 +172,17 @@ deploy:
   repo: 刚刚github创库地址.git
   branch: master
 ```
-***注意***
+****
+
+**注意***
 
  - 配置文件的冒号“:”后面有一个空格
  - repo: 刚刚 GitHub 创库地址.git
 
+
+
 #### hexo命令行使用
+
 常用命令
 
 ```
@@ -174,10 +197,19 @@ hexo s == hexo server
 hexo d == hexo deploy
 ```
 
+
+
 #### 编辑文章
+
+
+
 新建文章
-```hexo new "标题"```
+
+`hexo new "标题"`
+
 在 _posts 目录下会生成文件标题.md：
+
+
 
 ```
 title: Hello World
@@ -187,10 +219,19 @@ tags: [hexo,github] #文章标签，多于一项时用这种格式
 ---
 正文，使用 Markdown 语法书写
 ```
+
+
 编辑完后保存，hexo server预览
 
+
+
 #### hexo部署
+
+
+
 执行下列指令即可完成部署
+
+
 
 ```
 hexo generate
@@ -207,7 +248,75 @@ o[info] Deploy done: git
 ```
 点击Github上项目的Settings，Github Pages，提示 Your site is published at [http://allenlucas.ml][6](这是我自己申请的域名)
 
+
+
+#### 更换电脑的Hexo使用
+
+ 首先，在Github上新建一个hexo分支，然后在仓库的Settings中，选择默认分支为hexo。
+
+然后在本地的任意目录下，打开git bash。
+
+`git clone git@github.com:xxxx.github.io.git`
+
+
+
+将其克隆到本地，因为默认分支已经设成了hexo，所以clone时只clone了hexo。
+
+接下来在克隆到本地的`xxxx.github.io`中，把除了.git 文件夹外的所有文件都删掉
+
+把之前我们写的博客源文件全部复制过来，除了`.deploy_git`。这里应该说一句，复制过来的源文件应该有一个`.gitignore`，用来忽略一些不需要的文件，如果没有的话，自己新建一个，在里面写上如下，表示这些类型文件不需要git：
+
+```
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+```
+
+
+
+注意，如果你之前克隆过theme中的主题文件，那么应该把主题文件中的`.git`文件夹删掉，因为git不能嵌套上传，最好是显示隐藏文件，检查一下有没有，否则上传的时候会出错，导致你的主题文件无法上传，这样你的配置在别的电脑上就用不了了。
+
+而后
+
+```
+git add .
+git commit –m "add branch"
+git push
+```
+
+这样就上传完了，可以去你的github上看一看hexo分支有没有上传上去，其中`node_modules`、`public`、`db.json`已经被忽略掉了，没有关系，不需要上传的，因为在别的电脑上需要重新输入命令安装 .
+
+这样就上传完了
+
+#### 更换电脑操作
+
+直接在任意文件夹下，
+
+`git clone git@………………`
+
+然后进入克隆到的文件夹：
+
+```
+cd xxx.github.io
+npm install
+npm install hexo-deployer-git --save
+```
+
+生成，部署
+
+```
+hexo g
+hexo d
+```
+
+然后就可以写博客了。
+
 ## 图床
+
 ~~之前使用的七牛云存储来做图床，但是测试域名一个月后被收回，而我的域名是未备案的，pass。~~
 目前再网上使用的[又拍图片管家][7]，目前是免费用户，感觉效果还可可以，后续有更好的再更新。
 ## 域名
