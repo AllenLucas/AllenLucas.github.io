@@ -10,12 +10,12 @@ tags:
 >之前搭建的个人博客，但是各种各样的原因导致好久没有更新自己的博客，现在年底想写点东西保存下来，为明年找新工作做准备，但是好久没来，对Hexo博客的使用有点遗忘，特此从零开始，对Hexo搭建的步骤进行一次记录。
 此次写作，完全参考了[吴小龙同学-手把手教你建github技术博客by hexo][1]一文，说是转载也不为过，但是也有我从其他地方查找到的资料，特此声明。
 
-##环境准备
-####安装Git
+## 环境准备
+#### 安装Git
 [git官网][2]下载并执行即可完成安装。
-####安装Node.js
+#### 安装Node.js
 在Windows环境下安装[Node.js][3]非常简单，仅须下载安装文件并执行即可完成安装。
-####安装hexo
+#### 安装hexo
 利用npm命令即可安装。（在任意位置点击鼠标右键，选择Git bash）
 ```npm install -g hexo```
 ***问题***
@@ -29,12 +29,12 @@ tags:
     删除刚刚安装的npm目录，重新执行命令：
 ```npm install -g hexo```
 来安装hexo。
-####创建hexo文件夹
+#### 创建hexo文件夹
 安装完成后，在你喜欢的文件夹下（如：H:\hexo），执行以下指令（在H:\hexo内点击鼠标右键，选择Git bash），Hexo即会自动在目标文件夹建立网站所需要的所有文件。
 ```hexo init```
-####安装依赖包
+#### 安装依赖包
 ```npm install```
-####本地查看
+#### 本地查看
 现在我们已经搭建起本地的hexo博客了，执行以下命令（在H:\hexo），然后到浏览器输入localhost:4000看看。
 ```
 hexo generate
@@ -44,30 +44,31 @@ hexo server
 ***问题***
 
  - 执行hexo server提示找不到该指令
-解决办法：
-在Hexo 3.0后server被单独出来了，需要安装server，安装的命令如下：
-```npm install hexo -server --save```
-安装此server后再试，问题解决
-##Github创建博客
-####创建页面仓库
-这个仓库的名字需要和你的账号对应，格式：yourname.github.io
-输入基本信息，然后点击创建仓库![此处输入图片的描述][4]
-**注意**
-命名规则:你的Github账号.github.io
-####查看SSH
-SSH公钥默认储存在账户的主目录下的~/.ssh目录。
-进如.ssh目录下，命令行：
-```ls```
-查看，如果返回something和something.pub，说明已经有SSH公钥。
-####生成SSH公钥
-没有的话，生成，还是在.ssh目录下，命令行：
-ssh-keygen -t rsa -C "你的邮箱地址"
-按3个回车，密码为空。
-在 C:\Users\Administrator.ssh 下，得到两个文件 id_rsa 和 id_rsa.pub。
-####在Github上添加SSH密钥
-打开id_rsa.pub，复制全文到[https://github.com/settings/ssh][5]，Add SSH key粘贴进去
-##hexo使用
-####目录结构
+  解决办法：
+  在Hexo 3.0后server被单独出来了，需要安装server，安装的命令如下：
+  ```npm install hexo -server --save```
+  安装此server后再试，问题解决
+  ## Github创建博客
+  #### 创建页面仓库
+  这个仓库的名字需要和你的账号对应，格式：yourname.github.io
+  输入基本信息，然后点击创建仓库![此处输入图片的描述][4]
+  **注意**
+  命名规则:你的Github账号.github.io
+  #### 查看SSH
+  SSH公钥默认储存在账户的主目录下的~/.ssh目录。
+  进如.ssh目录下，命令行：
+  ```ls```
+  查看，如果返回something和something.pub，说明已经有SSH公钥。
+  #### 生成SSH公钥
+  没有的话，生成，还是在.ssh目录下，命令行：
+  ssh-keygen -t rsa -C "你的邮箱地址"
+  按3个回车，密码为空。
+  在 C:\Users\Administrator.ssh 下，得到两个文件 id_rsa 和 id_rsa.pub。
+  #### 在Github上添加SSH密钥
+  打开id_rsa.pub，复制全文到[https://github.com/settings/ssh][5]，Add SSH key粘贴进去
+  ##hexo使用
+
+  #### 目录结构
 ```
 ├── .deploy       #需要部署的文件
 ├── node_modules  #Hexo插件
@@ -158,8 +159,9 @@ deploy:
  - 配置文件的冒号“:”后面有一个空格
  - repo: 刚刚 GitHub 创库地址.git
 
-####hexo命令行使用
+#### hexo命令行使用
 常用命令
+
 ```
 
 ```
@@ -172,10 +174,11 @@ hexo s == hexo server
 hexo d == hexo deploy
 ```
 
-####编辑文章
+#### 编辑文章
 新建文章
 ```hexo new "标题"```
 在 _posts 目录下会生成文件标题.md：
+
 ```
 title: Hello World
 date: 2019-01-10 07:56:29 #发表日期，一般不改动
@@ -186,8 +189,9 @@ tags: [hexo,github] #文章标签，多于一项时用这种格式
 ```
 编辑完后保存，hexo server预览
 
-####hexo部署
+#### hexo部署
 执行下列指令即可完成部署
+
 ```
 hexo generate
 hexo deploy
@@ -203,12 +207,12 @@ o[info] Deploy done: git
 ```
 点击Github上项目的Settings，Github Pages，提示 Your site is published at [http://allenlucas.ml][6](这是我自己申请的域名)
 
-##图床
+## 图床
 ~~之前使用的七牛云存储来做图床，但是测试域名一个月后被收回，而我的域名是未备案的，pass。~~
 目前再网上使用的[又拍图片管家][7]，目前是免费用户，感觉效果还可可以，后续有更好的再更新。
-##域名
+## 域名
 我是在国外申请的一年免费域名，将就用
-##DNS设置
+## DNS设置
 ~~使用[CloudXNS][8]来进行解析，效果不错。免费服务已砍~~
 
 目前使用华为云解析，感觉国内速度也还可以，不过没有找到像CloudXns那种的一些访问记录之类的数据，不过对这个也不是很在意。
