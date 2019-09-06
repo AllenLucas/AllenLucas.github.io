@@ -1,4 +1,4 @@
-﻿---
+---
 title: 从零开始的Hexo个人博客搭建
 copyright: true
 date: 2019-01-10 13:40:15
@@ -26,7 +26,7 @@ tags:
 ```npm config set registry  http://registry.cnpmjs.org```
 
  - hexo:command not found
-  删除刚刚安装的npm目录，重新执行命令：
+    删除刚刚安装的npm目录，重新执行命令：
 ```npm install -g hexo```
 来安装hexo。
 ####创建hexo文件夹
@@ -209,14 +209,16 @@ o[info] Deploy done: git
 ##域名
 我是在国外申请的一年免费域名，将就用
 ##DNS设置
-使用[CloudXNS][8]来进行解析，效果不错。
+~~使用[CloudXNS][8]来进行解析，效果不错。免费服务已砍~~
+
+目前使用华为云解析，感觉国内速度也还可以，不过没有找到像CloudXns那种的一些访问记录之类的数据，不过对这个也不是很在意。
 
 
-  [1]: http://wuxiaolong.me/2015/07/31/build-blog-by-hexo/ "手把手教你建github技术博客by hexo"
-  [2]: https://git-scm.com/ "Git官网"
-  [3]: https://nodejs.org/en/ "Node.js官网"
-  [4]: http://pic.yupoo.com/l476849560/dcb1f3f3/45658191.png
-  [5]: https://github.com/settings/ssh
-  [6]: http://allenlucas.ml
-  [7]: https://x.yupoo.com/http://allenlucas.ml
-  [8]: http://www.cloudxns.net/
+[1]: http://wuxiaolong.me/2015/07/31/build-blog-by-hexo/ "手把手教你建github技术博客by hexo"
+[2]: https://git-scm.com/ "Git官网"
+[3]: https://nodejs.org/en/ "Node.js官网"
+[4]: http://pic.yupoo.com/l476849560/dcb1f3f3/45658191.png
+[5]: https://github.com/settings/ssh
+[6]: http://allenlucas.ml
+[7]: https://x.yupoo.com/http://allenlucas.ml
+[8]: http://www.cloudxns.net/
