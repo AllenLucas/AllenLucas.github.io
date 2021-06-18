@@ -29,8 +29,8 @@ tags:
 
  - hexo:command not found
     删除刚刚安装的npm目录，重新执行命令：
-`npm install -g hexo`
-来安装hexo。
+    `npm install -g hexo`
+    来安装hexo。
 #### 创建hexo文件夹
 安装完成后，在你喜欢的文件夹下（如：H:\hexo），执行以下指令（在H:\hexo内点击鼠标右键，选择Git bash），Hexo即会自动在目标文件夹建立网站所需要的所有文件。
 `hexo init`
@@ -263,6 +263,8 @@ o[info] Deploy done: git
 将其克隆到本地，因为默认分支已经设成了hexo，所以clone时只clone了hexo。
 
 接下来在克隆到本地的`xxxx.github.io`中，把除了.git 文件夹外的所有文件都删掉
+
+当前clone 的分支内，theme内的next是空文件，如果想要使用，需要从之前备份文件里的theme->next 拷贝过来，就可以了
 
 把之前我们写的博客源文件全部复制过来，除了`.deploy_git`。这里应该说一句，复制过来的源文件应该有一个`.gitignore`，用来忽略一些不需要的文件，如果没有的话，自己新建一个，在里面写上如下，表示这些类型文件不需要git：
 
