@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="Y6RYGzRoxper49NHFcAD1-puoGsNxXj_3o1LwhA3IWs">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen Lucas的后花园" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="之前两篇文章，我们在新建的Flutter项目中初步接触了Flutter，并进行了简单的分析，接下来，是对Flutter中的路由管理，进行简单的学习  路由管理简单的来说，Flutter中的路由，相当于Android中的Activity，这里的路由管理，就是Android中，不同的Activity之间进行跳转。在Android中，打开关闭Activity都会有一个堆栈进行管理，而在Flutter中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter 路由管理">
+<meta property="og:url" content="http://allenlucas.ml/2019/09/07/Flutter-路由管理/index.html">
+<meta property="og:site_name" content="Allen Lucas的后花园">
+<meta property="og:description" content="之前两篇文章，我们在新建的Flutter项目中初步接触了Flutter，并进行了简单的分析，接下来，是对Flutter中的路由管理，进行简单的学习  路由管理简单的来说，Flutter中的路由，相当于Android中的Activity，这里的路由管理，就是Android中，不同的Activity之间进行跳转。在Android中，打开关闭Activity都会有一个堆栈进行管理，而在Flutter中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-06-18T05:18:28.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter 路由管理">
+<meta name="twitter:description" content="之前两篇文章，我们在新建的Flutter项目中初步接触了Flutter，并进行了简单的分析，接下来，是对Flutter中的路由管理，进行简单的学习  路由管理简单的来说，Flutter中的路由，相当于Android中的Activity，这里的路由管理，就是Android中，不同的Activity之间进行跳转。在Android中，打开关闭Activity都会有一个堆栈进行管理，而在Flutter中">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://allenlucas.ml/2019/09/07/Flutter-路由管理/">
+
+
+
+
+
+  <title>Flutter 路由管理 | Allen Lucas的后花园</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen Lucas的后花园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">强迫症码农</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://allenlucas.ml/2019/09/07/Flutter-路由管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Lucas">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/18210321?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Lucas的后花园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter 路由管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T10:48:47+08:00">
+                2019-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/07/Flutter-路由管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/Flutter-路由管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>之前两篇文章，我们在新建的Flutter项目中初步接触了Flutter，并进行了简单的分析，接下来，是对Flutter中的路由管理，进行简单的学习</p>
+</blockquote>
+<h2 id="路由管理"><a href="#路由管理" class="headerlink" title="路由管理"></a>路由管理</h2><p>简单的来说，Flutter中的路由，相当于Android中的Activity，这里的路由管理，就是Android中，不同的Activity之间进行跳转。在Android中，打开关闭Activity都会有一个堆栈进行管理，而在Flutter中，也有一个路由栈，对Route进行入栈(push)，出栈(pop)的管理。</p>
+<h2 id="简单举例"><a href="#简单举例" class="headerlink" title="简单举例"></a>简单举例</h2><p>新建一个Route，可以在main.dart文件下新建，也可以另外新建一个dart文件，不过不要忘记导包。这里我是重新建了一个dart文件，并新建了一个Route</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewRoute</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(<span class="string">"This is a new Route"</span>),</span><br><span class="line">      ),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: FlatButton(</span><br><span class="line">          child: Text(<span class="string">"This is a new Route body"</span>),</span><br><span class="line">          textColor: Colors.blue,</span><br><span class="line">          onPressed: ()&#123;</span><br><span class="line">            Navigator.pop(context);</span><br><span class="line">          &#125;,</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><code>NewRoute</code>继承了无状态的Widget，返回了一个带导航栏的Widget，内容是居中显示的一个FlatButton，显示的文字是“This is a new Route body”,颜色是蓝色，点击事件的话，这里是<code>Navigator.pop(context)</code>,这里不具体的分析这个方法，只是说明一下作用，是让Route从路由栈中出栈。那么一个新的Route就完成了。</p>
+<p>接下来是在之前的main.dart文件中进行一下修改，添加一个路由管理的按钮</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MyHomePageState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">MyHomePage</span>&gt; </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(...),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            </span><br><span class="line">            ...</span><br><span class="line">            <span class="comment">//添加的代码</span></span><br><span class="line">            FlatButton(</span><br><span class="line">              child: Text(<span class="string">"open new route"</span>),</span><br><span class="line">              textColor: Colors.blue,</span><br><span class="line">              onPressed: () &#123;</span><br><span class="line">                Navigator.push(context, MaterialPageRoute(builder: (context) &#123;</span><br><span class="line">                  <span class="keyword">return</span> NewRoute();</span><br><span class="line">                &#125;));</span><br><span class="line">              &#125;,</span><br><span class="line">            ),</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">     ...</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>简单说就是在body的子Widget下面，添加了一个FlatButton，文字是“open new route”，颜色是蓝色，点击方法是<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Navigator.push(context, MaterialPageRoute(builder: (context) &#123;</span><br><span class="line">    <span class="keyword">return</span> NewRoute();</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+<p>作用是将一个Route入栈。</p>
+<h2 id="MaterialPageRoute"><a href="#MaterialPageRoute" class="headerlink" title="MaterialPageRoute"></a>MaterialPageRoute</h2><p><code>MaterialPageRoute</code>继承自<code>PageRoute</code>类，<code>PageRoute</code>类是一个抽象类，表示占有整个屏幕空间的一个模态路由页面，它还定义了路由构建及切换时过渡动画的相关接口及属性。<code>MaterialPageRoute</code> 是<code>Material</code>组件库提供的组件，它可以针对不同平台，实现与平台页面切换动画风格一致的路由切换动画：</p>
+<ul>
+<li>对于Android，当打开新页面时，新的页面会从屏幕底部滑动到屏幕顶部；当关闭页面时，当前页面会从屏幕顶部滑动到屏幕底部后消失，同时上一个页面会显示到屏幕上。</li>
+<li>对于iOS，当打开页面时，新的页面会从屏幕右侧边缘一致滑动到屏幕左边，直到新页面全部显示到屏幕上，而上一个页面则会从当前屏幕滑动到屏幕左侧而消失；当关闭页面时，正好相反，当前页面会从屏幕右侧滑出，同时上一个页面会从屏幕左侧滑入。</li>
+</ul>
+<p>简单说一下<code>MaterialPageRoute</code>类的构造函数<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MaterialPageRoute(&#123;</span><br><span class="line">    WidgetBuilder builder,</span><br><span class="line">    RouteSettings settings,</span><br><span class="line">    <span class="built_in">bool</span> maintainState = <span class="keyword">true</span>,</span><br><span class="line">    <span class="built_in">bool</span> fullscreenDialog = <span class="keyword">false</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><code>builder</code> 是一个WidgetBuilder类型的回调函数，它的作用是构建路由页面的具体内容，返回值是一个widget。我们通常要实现此回调，返回新路由的实例。<br><code>settings</code>包含路由的配置信息，如路由名称、是否初始路由（首页）。<br><code>maintainState</code>默认情况下，当入栈一个新路由时，原来的路由仍然会被保存在内存中，如果想在路由没用的时候释放其所占用的所有资源，可以设置maintainState为false。<br><code>fullscreenDialog</code>表示新的路由页面是否是一个全屏的模态对话框，在iOS中，如果fullscreenDialog为true，新页面将会从屏幕底部滑入（而不是水平方向）。</p>
+<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p>上面的入栈和出栈中，都有用到Navigator类，那么现在我们就来稍微分析一下这个类<br>是一个路由管理的组件，它提供了打开和退出路由页方法。Navigator通过一个栈来管理活动路由集合。通常当前屏幕显示的页面就是栈顶的路由。Navigator提供了一系列方法来管理路由栈，在此我们只介绍其最常用的两个方法：</p>
+<h3 id="Future-push-BuildContext-context-Route-route"><a href="#Future-push-BuildContext-context-Route-route" class="headerlink" title="Future push(BuildContext context, Route route)"></a>Future push(BuildContext context, Route route)</h3><p>将给定的路由入栈（即打开新的页面），返回值是一个Future对象，用以接收新路由出栈（即关闭）时的返回数据。</p>
+<h3 id="bool-pop-BuildContext-context-result"><a href="#bool-pop-BuildContext-context-result" class="headerlink" title="bool pop(BuildContext context, [ result ])"></a>bool pop(BuildContext context, [ result ])</h3><p>将栈顶路由出栈，result为页面关闭时返回给上一个页面的数据。</p>
+<h2 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h2><p><code>Navigator</code>类中第一个参数为context的静态方法都对应一个Navigator的实例方法， 比如<code>Navigator.push(BuildContext context, Route route)</code>等价于<code>Navigator.of(context).push(Route route)</code> ，下面命名路由相关的方法也是一样的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Flutter中的路由管理，大致可以看作Android中的Activity堆栈的管理，后续类似Activity跳转动画和Activity间的传值，我想Flutter中应该也有相对应的实现。</p>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/09/07/Flutter-路由管理/">Flutter 路由管理</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Allen Lucas 的个人博客">Allen Lucas</a></p>
+  <p><span>发布时间:</span>2019年09月07日 - 10:09</p>
+  <p><span>最后更新:</span>2021年06月18日 - 13:06</p>
+  <p><span>原始链接:</span><a href="/2019/09/07/Flutter-路由管理/" title="Flutter 路由管理">http://allenlucas.ml/2019/09/07/Flutter-路由管理/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://allenlucas.ml/2019/09/07/Flutter-路由管理/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/06/新建Flutter项目并分析/" rel="next" title="新建Flutter项目并分析">
+                <i class="fa fa-chevron-left"></i> 新建Flutter项目并分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/08/Flutter路由传值/" rel="prev" title="Flutter路由传值">
+                Flutter路由传值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/18210321?s=460&v=4" alt="Allen Lucas">
+            
+              <p class="site-author-name" itemprop="name">Allen Lucas</p>
+              <p class="site-description motion-element" itemprop="description">林中多歧路 殊途同归</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#路由管理"><span class="nav-number">1.</span> <span class="nav-text">路由管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单举例"><span class="nav-number">2.</span> <span class="nav-text">简单举例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-1"><span class="nav-number">2.2.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MaterialPageRoute"><span class="nav-number">3.</span> <span class="nav-text">MaterialPageRoute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigator"><span class="nav-number">4.</span> <span class="nav-text">Navigator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Future-push-BuildContext-context-Route-route"><span class="nav-number">4.1.</span> <span class="nav-text">Future push(BuildContext context, Route route)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bool-pop-BuildContext-context-result"><span class="nav-number">4.2.</span> <span class="nav-text">bool pop(BuildContext context, [ result ])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例方法"><span class="nav-number">5.</span> <span class="nav-text">实例方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Lucas</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'VhuCuxktyJrW2SguNDEXSkoS-gzGzoHsz',
+        appKey: 'NXhRtl9ho7JOAFSWGVcVestC',
+        placeholder: '评论点什么吧...',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

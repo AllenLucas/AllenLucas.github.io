@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="Y6RYGzRoxper49NHFcAD1-puoGsNxXj_3o1LwhA3IWs">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Allen Lucas的后花园" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="眨眼，七月已经过去，算算日子，18年也已过半。想想年初的目标，再看看自身的成长，决定不能再这么下去了。今天正好是8月1日，决定从今天开始，入坑Python。  人生苦短，我用Pyhton入坑这里特别感谢微信公众号 Python绿色通道Python绿色通道里面的Python技术文章对我帮助很大，让我很快速的入门。Python环境安装下载安装Pytharm（jetbrains公司出品，对于使用Andr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人生苦短，我用Python，始于八月。">
+<meta property="og:url" content="http://allenlucas.ml/2018/08/01/人生苦短，我用Python，始于八月。/index.html">
+<meta property="og:site_name" content="Allen Lucas的后花园">
+<meta property="og:description" content="眨眼，七月已经过去，算算日子，18年也已过半。想想年初的目标，再看看自身的成长，决定不能再这么下去了。今天正好是8月1日，决定从今天开始，入坑Python。  人生苦短，我用Pyhton入坑这里特别感谢微信公众号 Python绿色通道Python绿色通道里面的Python技术文章对我帮助很大，让我很快速的入门。Python环境安装下载安装Pytharm（jetbrains公司出品，对于使用Andr">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180801114846.jpg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1152061-d1c6c9303ad5b2c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/20180201155637.jpg">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/l.png">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/l1.png">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/20130718142301078.jpg">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/20130718142520187.jpg">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/640.jpg">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/20130718144343421.jpg">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/20130718144841625.jpg">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/20130718145213312.jpg">
+<meta property="og:image" content="http://pctoyk71k.bkt.clouddn.com/20130718150729484.jpg">
+<meta property="og:updated_time" content="2021-06-18T05:18:28.315Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人生苦短，我用Python，始于八月。">
+<meta name="twitter:description" content="眨眼，七月已经过去，算算日子，18年也已过半。想想年初的目标，再看看自身的成长，决定不能再这么下去了。今天正好是8月1日，决定从今天开始，入坑Python。  人生苦短，我用Pyhton入坑这里特别感谢微信公众号 Python绿色通道Python绿色通道里面的Python技术文章对我帮助很大，让我很快速的入门。Python环境安装下载安装Pytharm（jetbrains公司出品，对于使用Andr">
+<meta name="twitter:image" content="http://pctoyk71k.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180801114846.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://allenlucas.ml/2018/08/01/人生苦短，我用Python，始于八月。/">
+
+
+
+
+
+  <title>人生苦短，我用Python，始于八月。 | Allen Lucas的后花园</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen Lucas的后花园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">强迫症码农</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-board">
+          <a href="/board" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://allenlucas.ml/2018/08/01/人生苦短，我用Python，始于八月。/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Lucas">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/18210321?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Lucas的后花园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">人生苦短，我用Python，始于八月。</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T11:28:19+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python入门/" itemprop="url" rel="index">
+                    <span itemprop="name">Python入门</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/01/人生苦短，我用Python，始于八月。/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/01/人生苦短，我用Python，始于八月。/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif"><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px">眨眼，七月已经过去，算算日子，18年也已过半。想想年初的目标，再看看自身的成长，决定不能再这么下去了。今天正好是8月1日，决定从今天开始，入坑Python。</p><br><blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0px; color: rgb(129, 145, 152); border-left: 6px solid rgb(220, 230, 240); background: rgb(242, 247, 251); overflow: auto; word-wrap: normal; word-break: normal"><br>  <p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 0px">人生苦短，我用Pyhton</p><br></blockquote><br><h1 id="h" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px">入坑</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px">这里特别感谢微信公众号 Python绿色通道</p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180801114846.jpg" alt="Python绿色通道" title="Python绿色通道" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">Python绿色通道</figcaption></figure><br>里面的Python技术文章对我帮助很大，让我很快速的入门。<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px"></p><br><h1 id="hpython" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px">Python环境安装</span></h1><br><ol style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; padding-left: 32px; list-style-type: decimal"><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em">下载安装Pytharm（jetbrains公司出品，对于使用AndroidStudio的我来说，这个比较熟悉）我下载的是专业版2018.2。<figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://upload-images.jianshu.io/upload_images/1152061-d1c6c9303ad5b2c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选择Windows系统的专业版下载" title="选择Windows系统的专业版下载" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">选择Windows系统的专业版下载</figcaption></figure><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/20180201155637.jpg" alt="勾选644位及与.py后缀格式文件关联，如果电脑上没有JDK，勾选下方的按钮下载JRE" title="勾选644位及与.py后缀格式文件关联，如果电脑上没有JDK，勾选下方的按钮下载JRE" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">勾选644位及与.py后缀格式文件关联，如果电脑上没有JDK，勾选下方的按钮下载JRE</figcaption></figure></li><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em">激活Pytharm<a href="https://www.imsxm.com/2018/07/idea-2018-1-5-crack-patcher.html" title="可能获得激活方法" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); word-wrap: break-word" target="_blank" rel="noopener">可在该处得到帮助</a></li><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em">下载Pyhton解释器<a href="https://www.python.org/" title="Pyhton官网" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); word-wrap: break-word" target="_blank" rel="noopener">Python官网</a>,我下载的是64位的window平台的，<figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/l.png" alt="安装Python" title="安装Python" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">安装Python</figcaption></figure>记得勾选Add Python to PATH，如果在命令行输入python，<figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/l1.png" alt="命令行输入python" title="命令行输入python" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">命令行输入python</figcaption></figure>出现上面的画面，说明Python安装成功。</li><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px">至此，Pyhton环境搭建完毕</span></li><br></ol><br><h1 id="hhelloworldpython" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px">hello world python</span></h1><br><ol style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; padding-left: 32px; list-style-type: decimal"><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em">新建项目<figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/20130718142301078.jpg" alt="新建一个Python项目" title="新建一个Python项目" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">新建一个Python项目</figcaption></figure></li><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em">新建一个文件<figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/20130718142520187.jpg" alt="新建一个Python文件" title="新建一个Python文件" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">新建一个Python文件</figcaption></figure></li><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px">进入编写页面</span></li><br></ol><br><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><code class="python language-python hljs" style="margin: 0px 2px; line-height: 15px; font-size: 11px; font-weight: normal; word-spacing: -3px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; color: rgb(169, 183, 198); background: rgb(40, 43, 46); overflow-x: auto; padding: 0.5em; display: block !important; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important"><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important">1</span>&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important">“hello&nbsp;world&nbsp;by&nbsp;python!”</span>)<br></code></pre><br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/640.jpg" alt="图片与文中内容不一致" title="图片与文中内容不一致" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">图片与文中内容不一致</figcaption></figure><br><div class="output_wrapper" id="output_wrapper_id" style="font-size: 15px; color: rgb(62, 62, 62); line-height: 1.8; word-spacing: 2px; letter-spacing: 2px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%); background-size: 20px 20px; background-position: center center"><ol start="4" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; padding-left: 32px; list-style-type: decimal"><br><li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em">设置控制台<br>运行之前，我们发现快捷菜单上的【运行】和【调试】都是灰色的，不可触发状态。是因为，我们需要先配置一下控制台。<br>点击运行旁边的黑色倒三角，进入【Run/Debug Configurations】配置界面。（或者点击Run –&gt; Edit Configurations 也一样）<br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/20130718144343421.jpg" alt="进入【Run/Debug Configurations】配置界面" title="进入【Run/Debug Configurations】配置界面" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">进入【Run/Debug Configurations】配置界面</figcaption></figure><br>在【Run/Debug Configurations】配置界面里，<br>点击绿色的加号，新建一个配置项，并选择python。（因为hello word 就是个python程序）<br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/20130718144841625.jpg" alt="新建一个配置项，并选择python" title="新建一个配置项，并选择python" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">新建一个配置项，并选择python</figcaption></figure><br>在右边的配置界面里：<br>Name 一栏里写个名字，比如Hello<br>点击Scrip选项，找到刚才我们写的hello_word.py<br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/20130718145213312.jpg" alt="新建一个配置项，并选择python" title="新建一个配置项，并选择python" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">新建一个配置项，并选择python</figcaption></figure><br>点击ok, 自动返回到编辑界面，这时候【运行】【调试】按钮全部变绿！<br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px"><img src="http://pctoyk71k.bkt.clouddn.com/20130718150729484.jpg" alt="新建一个配置项，并选择python" title="新建一个配置项，并选择python" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em">新建一个配置项，并选择python</figcaption></figure></li><br></ol></div><br><h1 id="h-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px">总结</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px">Pyhton的环境搭建还是比较简单快速的，通过这几个步骤，我就进入到了Pyhton的世界，其实很早之前就想学习下Python，但是1是没有合理的规划好时间，2是自己意志力不够坚定。现在随着博客的搭建，一切步入正轨，之前的很多想法但是没实现的，我都会一点点的去尝试下，然后再博客上记录下来。</p><br><blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0px; color: rgb(129, 145, 152); border-left: 6px solid rgb(220, 230, 240); background: rgb(242, 247, 251); overflow: auto; word-wrap: normal; word-break: normal"><br>  <p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 0px">人生苦短，我用Python</p><br></blockquote></div>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2018/08/01/人生苦短，我用Python，始于八月。/">人生苦短，我用Python，始于八月。</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Allen Lucas 的个人博客">Allen Lucas</a></p>
+  <p><span>发布时间:</span>2018年08月01日 - 11:08</p>
+  <p><span>最后更新:</span>2021年06月18日 - 13:06</p>
+  <p><span>原始链接:</span><a href="/2018/08/01/人生苦短，我用Python，始于八月。/" title="人生苦短，我用Python，始于八月。">http://allenlucas.ml/2018/08/01/人生苦短，我用Python，始于八月。/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://allenlucas.ml/2018/08/01/人生苦短，我用Python，始于八月。/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/26/我的第一篇博客/" rel="next" title="我的第一篇博客">
+                <i class="fa fa-chevron-left"></i> 我的第一篇博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/06/心情随想，8.6/" rel="prev" title="心情随想，8.6">
+                心情随想，8.6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/18210321?s=460&v=4" alt="Allen Lucas">
+            
+              <p class="site-author-name" itemprop="name">Allen Lucas</p>
+              <p class="site-description motion-element" itemprop="description">林中多歧路 殊途同归</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#h"><span class="nav-number">1.</span> <span class="nav-text">入坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hpython"><span class="nav-number">2.</span> <span class="nav-text">Python环境安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hhelloworldpython"><span class="nav-number">3.</span> <span class="nav-text">hello world python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#h-1"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Lucas</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'VhuCuxktyJrW2SguNDEXSkoS-gzGzoHsz',
+        appKey: 'NXhRtl9ho7JOAFSWGVcVestC',
+        placeholder: '评论点什么吧...',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
