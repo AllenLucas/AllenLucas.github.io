@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://allenlucas.ml/"/>
-  <updated>2021-06-22T06:46:28.639Z</updated>
+  <updated>2021-06-22T06:56:21.753Z</updated>
   <id>http://allenlucas.ml/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://allenlucas.ml/2021/06/22/microG-%E6%9B%BF%E4%BB%A3Google%E6%A1%86%E6%9E%B6%E7%9A%84%E5%8F%AF%E8%A1%8C%E6%80%A7%E6%96%B9%E6%A1%88/"/>
     <id>http://allenlucas.ml/2021/06/22/microG-替代Google框架的可行性方案/</id>
     <published>2021-06-22T03:15:51.000Z</published>
-    <updated>2021-06-22T06:46:28.639Z</updated>
+    <updated>2021-06-22T06:56:21.753Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>安装过<code>google</code>框架的人都知道，因为某些因素，导致框架会持续进行连接，会造成手机的耗电，除非24小时挂T。虽然当前可以达到这样的条件，但是<code>google</code>占用的内存对我这个4gRam的手机来说，也是一个不小的考验，于是便有了这篇文章</p></blockquote><p>许久之前便听闻<code>microG</code>项目，只不过一直以为没有达到正常使用的地步，再加上玩机次数越来越少，所以一直没有尝试。最近在酷安发现这么一篇<a href="https://www.coolapk.com/feed/21654891?shareKey=NmEyNTZiZmZkZmUxNjBkMDJjNjM~&amp;shareUid=1439113&amp;shareFrom=com.coolapk.market_11.0.3" target="_blank" rel="noopener">文章</a>，边想尝试把手机里的<code>google</code>给替换掉。中途还因为第一次安装不熟悉的关系导致手机卡第一屏，不得不刷机解决。那么这次便根据文章，在进行自己的过程进行总结。</p><h3 id="普通安装"><a href="#普通安装" class="headerlink" title="普通安装"></a>普通安装</h3><p>这里提供一下<code>microG</code>的下载地址:<a href="https://www.coolapk.com/feed/21654891?shareKey=NmEyNTZiZmZkZmUxNjBkMDJjNjM~&amp;shareUid=1439113&amp;shareFrom=com.coolapk.market_11.0.3" target="_blank" rel="noopener">下载地址</a>,里面主要用到<code>Services Core</code>，<code>Services framework Proxxy</code> ,<code>Store</code>,<code>DroidGuard Helper</code>,至于<code>UnifiedNlp</code> 我并没有安装，这个看个人需求</p><ul><li>步骤一：签名欺骗</li></ul><p>由于<code>Services Core</code> 与 <code>google play services</code> 包名一样，<code>Services Framework Proxy</code> 与 <code>google servies Framework</code> 包名一致，但是安装包的包名是不可能跟<code>google</code>官方一致的，所以需要进行签名欺骗，文章里使用的是一个<code>Xposed</code> 模块 <code>FakeGapps</code>,(个人猜想核心破解过的是否也可以进行安装呢)</p><ul><li>步骤二：安装<code>services Core</code></li></ul><p>安装<code>Services Core</code>，在这里可以进行一些总的管理，包括账号登录，注册<code>Fcm</code>等，其中有一项自检测功能，详细显示了哪些模块还不支持，只有全部勾选才可以正常使用</p><p><img src="http://image.coolapk.com/feed/2020/0915/17/1175501_1df7ca58_3148_2301@1080x2179.jpeg.m.jpg" alt="自检测选项"></p><ul><li>步骤三：安装<code>Services Framework Proxy</code> </li><li>步骤四：安装 应用商店，如果不想使用<code>google</code>商店，那么安装<code>Store(Fake Store)</code> 进行伪装，使用其他应用商店进行操作</li><li>步骤五：转为系统<code>app</code></li></ul><p>根据上面步骤操作后，基本完成安装，但是作为替换<code>Google</code>框架来说，应该赋予它更高的权限，尤其是<code>DroidGuard Helper</code> 需要作为系统应用安装，<code>Services Core</code> 需要作为系统应用来实现自启动，不被误杀等更高的权限，所以需要将用户应用转化为系统应用，用到<code>Magisk</code>模块 <code>App Systemizer(Terminal Emulator)</code>,然后使用终端模拟器进行操作，执行</p><p><code>su</code> 命令，然后执行<code>systemize</code>,然后会出现下图的显示，选择1，等待列出所有用户<code>app</code>，选择将其中的<code>Services Core</code>,<code>Services Framework Proxy</code>,<code>DroidGuard Helper</code> 这3个软件转化到<code>/system/priv-app/</code>路径下，<img src="http://image.coolapk.com/feed/2020/0915/17/1175501_ea94bcef_3159_5594@1080x2183.jpeg.m.jpg" alt="终端模拟器"></p><ul><li>结束</li></ul><h3 id="Magisk-安装"><a href="#Magisk-安装" class="headerlink" title="Magisk 安装"></a><code>Magisk</code> 安装</h3><p>上述的安装会比较麻烦，还有一个方式是通过<code>Magisk</code>模块直接安装的方式，通过刷入<code>microG_Installer_Revived</code>模块，会直接将三件套安装到<code>/system/priv-app</code>的路径下</p><h3 id="NanoDroid"><a href="#NanoDroid" class="headerlink" title="NanoDroid"></a><code>NanoDroid</code></h3><p>文章也有提到这个项目，不过没有多研究，因此不深入</p>]]></content>
     
