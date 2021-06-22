@@ -7,6 +7,13 @@
     </url>
     
     <url>
+        <loc>http://allenlucas.ml/about/</loc>
+        <lastmod>2021-06-22T06:49:50.866Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>http://allenlucas.ml/categories/</loc>
         <lastmod>2021-06-18T05:18:28.321Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -16,13 +23,6 @@
     <url>
         <loc>http://allenlucas.ml/board/</loc>
         <lastmod>2021-06-18T05:18:28.319Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://allenlucas.ml/about/</loc>
-        <lastmod>2021-06-18T05:18:28.318Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
