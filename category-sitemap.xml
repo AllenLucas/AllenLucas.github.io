@@ -7,13 +7,6 @@
     </url>
 
     <url>
-        <loc>http://allenlucas.ml/categories/Git/</loc>
-        <lastmod>2021-06-18T05:18:28.314Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://allenlucas.ml/categories/Python%E5%85%A5%E9%97%A8/</loc>
         <lastmod>2021-06-18T05:18:28.315Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -50,7 +43,14 @@
 
     <url>
         <loc>http://allenlucas.ml/categories/MicroG/</loc>
-        <lastmod>2021-06-22T06:56:21.753Z</lastmod>
+        <lastmod>2021-06-22T07:15:44.182Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://allenlucas.ml/categories/Git/</loc>
+        <lastmod>2021-06-28T03:30:58.083Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
