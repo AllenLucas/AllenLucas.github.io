@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://allenlucas.ml/"/>
-  <updated>2021-06-28T03:30:58.083Z</updated>
+  <updated>2021-07-05T02:26:31.197Z</updated>
   <id>http://allenlucas.ml/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>普通类型Dialog对应的Context为什么必须是Activity</title>
+    <link href="http://allenlucas.ml/2021/07/05/%E6%99%AE%E9%80%9A%E7%B1%BB%E5%9E%8BDialog%E5%AF%B9%E5%BA%94%E7%9A%84Context%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%98%AFActivity/"/>
+    <id>http://allenlucas.ml/2021/07/05/普通类型Dialog对应的Context为什么必须是Activity/</id>
+    <published>2021-07-05T01:42:23.000Z</published>
+    <updated>2021-07-05T02:26:31.197Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>文章截选自<a href="https://mp.weixin.qq.com/s/N9wmilV1_uJjxB0W8Hrc_Q" target="_blank" rel="noopener">鸿洋大神的文章</a></p></blockquote><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol><li>为什么传入一个非Activity的context会出现错误？</li><li>传入的context一定要Activity吗？</li></ol><h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol><li><p>先来看第二问，这里只说结论，普通的Dialog传入的Activty必须使用Activity，但是如果指定为系统级的dialog，是可以传入非Activity的context的。那么为什么会这样呢。接下来一点一点的详解：</p><ul><li><p>先说一下如果指定为系统级的dialog，</p><ul><li>首先，涉及到系统类型的为防止滥用，肯定会授予权限才可以，这里必须要拥有SYSTEM_ALERT_WINDOW权限才可以</li><li>在调用Dialog.show方法之前，必须把Dialog的Window的type指定为SYSTEM_WINDOW类型，比如TYPE_SYSTEM_ALERT or TYPE_APPLICATION_OVERLAY 这样的类型</li></ul></li><li><p>普通的Dialog的容器为Activity，所以其窗口属性的token就是引用的Activity中的token，在WMS中，会根据该token来查找到对应的ActivityRecord实例，后面会把Dialog对应的WindowState添加到该ActivityRecord中。<strong>note:如果在查找容器这一步，没有找到对应的实例，就会抛出<code>BadTokenException(token null is not valid:is your activity running?)</code></strong></p></li><li><p>为什么使用Activity才可以找到容器，其他的非Activity的Context不行呢？Dialog在show方法中是通过WindowManager来添加view的，而这个WindowManager对象是从Context的getSystemService(WINDOW_SERVICE)方法获取的</p><p><strong>重点,与其他非Activity不同，Activity重写了context的getSystemService方法，在获取WINDOW_SERVICE的时候返回了Activity主Window的WindowManager对象，其中的mParentWindow指向主Window(其他非Activity的Context的WindowManager.mParaentWindow默认为null)</strong></p><p>WindowManagerGlobal在addView的时候，如果检查到mParentWindow不为null，就会对窗口属性的token进行赋值，逻辑为</p><ul><li>窗口类型为SUB_WINDOW(子窗口),会把mParentWindow对应的ViewRootImp的mWindow赋值给token</li><li>窗口类型为SYSTEM_WINDOW(系统级别窗口)，不会对token进行赋值，因为普通应用的Window等级低于系统Window</li><li>窗口类型APPLICATION_WINDOW,会把mParentWindow的mAppToken(所属Activity的mToken)赋值给token</li></ul></li><li><p>为什么需要一个Token，WMS需要根据该token确定Window的位置，如果没有token无法确认放在哪个容器上。</p></li><li><p>为什么设置为系统级别弹窗，没有token也可以显示呢？当获得SYSTEM_ALERT_WINDOW权限后，会即时创建一个WindowToken，然后新建的WindowToken附加到特定的容器上.</p></li></ul><p><img src="http://pic.yupoo.com/l476849560/5e9bd5f6/910e9178.png" alt="普通Dialog的显示"></p><p>这是普通的dialog显示，最底下的WindowState就是Dialog的窗口，指定为系统级别的dialog后，图例如下:</p><p><img src="http://pic.yupoo.com/l476849560/8949d188/af4b6a8c.png" alt="系统级别dialog显示"></p><p>右边地下的WindowState就是系统级别类型dialog的窗口，层级关系上，与隔壁的ActivityRecord相等。这里的WindowToken就是刚刚即时创建的WindowToken</p></li><li><p>回到第一个问题，为什么使用非Activity来创建并弹出dialog，有时会发生BadTokenException？</p><ul><li>因为使用非Activity来创建，无法获取到parentWindow，导致在WMS里找不到对应的容器</li><li>另一个就是想要使用系统级dialog，但是没有SYSTEM_ALERT_WINDOW权限，同样当作普通dialog来处理</li></ul><p>两种情况都是无法找到对应的盛放容器，所以报错</p></li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>show一个普通的Dialog需要的并不是Activity本身，而是一个容器的token，平时传Activity，只是刚好有对应WMS的一个WindowState容器而已</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;文章截选自&lt;a href=&quot;https://mp.weixin.qq.com/s/N9wmilV1_uJjxB0W8Hrc_Q&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;鸿洋大神的文章&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote
+      
+    
+    </summary>
+    
+      <category term="Android Dialog" scheme="http://allenlucas.ml/categories/Android-Dialog/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>git设置代理</title>
