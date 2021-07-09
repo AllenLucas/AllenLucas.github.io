@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://allenlucas.ml/"/>
-  <updated>2021-07-05T02:26:31.197Z</updated>
+  <updated>2021-07-09T07:43:36.013Z</updated>
   <id>http://allenlucas.ml/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Win10驱动正常无声音，显示扬声器未插入的解决办法</title>
+    <link href="http://allenlucas.ml/2021/07/09/Win10%E9%A9%B1%E5%8A%A8%E6%AD%A3%E5%B8%B8%E6%97%A0%E5%A3%B0%E9%9F%B3%EF%BC%8C%E6%98%BE%E7%A4%BA%E6%89%AC%E5%A3%B0%E5%99%A8%E6%9C%AA%E6%8F%92%E5%85%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://allenlucas.ml/2021/07/09/Win10驱动正常无声音，显示扬声器未插入的解决办法/</id>
+    <published>2021-07-09T07:26:31.000Z</published>
+    <updated>2021-07-09T07:43:36.013Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>重装电脑后遇到扬声器未插入的情况导致没有声音，但是驱动都是正常的，网上搜索半天，有了该篇文章用以记录，原文链接:<a href="https://blog.csdn.net/chehec2010/article/details/80889607" target="_blank" rel="noopener">链接</a></p></blockquote><ol><li><p>第一步，打开控制面板，点击硬件和声音</p><p><img src="http://pic.yupoo.com/l476849560/aaea1cef/a3a5bd36.jpg" alt="控制面板"></p></li><li><p>第二步，打开Realtek高清晰音频管理器</p><p><img src="http://pic.yupoo.com/l476849560/3beb4077/d9ff5032.jpg" alt="硬件和声音"></p></li><li><p>第三步，在Realtek高清晰音频管理器内部进行配置，成功显示效果，（未成功前只有一个显示，没有扬声器和麦克风连接成功的显示）</p><p><img src="http://pic.yupoo.com/l476849560/c600b71b/864a63f0.jpg" alt></p></li><li><p>第四步，配置</p><ul><li>点击右上角设置按键</li></ul><p><img src="http://pic.yupoo.com/l476849560/44267ae7/3aad62ef.jpg" alt></p><ul><li>将上图中”插孔设置”选项的AC97前面板勾选，后面的HD音频面板不勾选，点击确定</li></ul><p><img src="http://pic.yupoo.com/l476849560/6adef9ae/42d00bb1.jpg" alt></p><ul><li>此时便已经成功</li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;重装电脑后遇到扬声器未插入的情况导致没有声音，但是驱动都是正常的，网上搜索半天，有了该篇文章用以记录，原文链接:&lt;a href=&quot;https://blog.csdn.net/chehec2010/article/details/80889607&quot; 
+      
+    
+    </summary>
+    
+      <category term="Win10" scheme="http://allenlucas.ml/categories/Win10/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>普通类型Dialog对应的Context为什么必须是Activity</title>
