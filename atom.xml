@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://allenlucas.ml/"/>
-  <updated>2021-07-09T07:43:36.013Z</updated>
+  <updated>2021-07-09T08:31:48.635Z</updated>
   <id>http://allenlucas.ml/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用NetLify托管我的静态网页</title>
+    <link href="http://allenlucas.ml/2021/07/09/%E4%BD%BF%E7%94%A8NetLify%E6%89%98%E7%AE%A1%E6%88%91%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/"/>
+    <id>http://allenlucas.ml/2021/07/09/使用NetLify托管我的静态网页/</id>
+    <published>2021-07-09T07:57:16.000Z</published>
+    <updated>2021-07-09T08:31:48.635Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>github因为被墙，无法访问，于是准备使用托管网站将自己的blog进行托管以便国内访问，查找到了netlify 和vercel两款产品。网络上评价vercel更简单，但是自己在github pages 中使用的双分支，一个分支是存放hexo配置的，一个分支是保存文章的，在vercel中没有配置好，于是不得不放弃，转而使用netlify。</p><p>更新：截至到目前为止，托管在netlify的blog，国内的也是打不开了。不过好处是它自动给我申请了一个https的校验证书:laughing:</p></blockquote><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul><li><p>登录，我选择使用github来登录并授予权限</p><p><img src="http://pic.yupoo.com/l476849560/959f43ca/0edbb971.jpg" alt></p></li><li><p>新建项目</p><p><img src="http://pic.yupoo.com/l476849560/929a94b9/37655604.jpg" alt></p></li><li><p>选则github来源</p><p><img src="http://pic.yupoo.com/l476849560/73397e71/d92d561b.jpg" alt></p></li><li><p>选择自己的项目</p><p><img src="http://pic.yupoo.com/l476849560/f0c670d8/44f98e7c.jpg" alt></p></li><li><p>进一步配置,部署分支选择 保存配置的分支</p><p><img src="http://pic.yupoo.com/l476849560/68073824/8930de7c.jpg" alt></p></li><li><p>然后等待一会。netlify会自动帮我们生成网址</p><p><img src="http://pic.yupoo.com/l476849560/89ef9c1a/e87445a2.jpg" alt></p></li><li><p>后续的修改域名什么的就不在展示了。修改域名的话需要在域名解析里按照提供的进行解析添加就好了。</p></li><li><p>接下来需要设置自动部署，因为我的是双分支。</p><p>点击进入部署选项，在下面的分支进行修改，如图所示，部署的分支选择保存hexo配置的分支，生产分支选择保存文件的分支</p><p><img src="http://pic.yupoo.com/l476849560/1cc1806d/7380a9f9.jpg" alt></p><p><img src="http://pic.yupoo.com/l476849560/84946909/0ed99866.jpg" alt></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;github因为被墙，无法访问，于是准备使用托管网站将自己的blog进行托管以便国内访问，查找到了netlify 和vercel两款产品。网络上评价vercel更简单，但是自己在github pages 中使用的双分支，一个分支是存放hexo配置的
+      
+    
+    </summary>
+    
+      <category term="netLify" scheme="http://allenlucas.ml/categories/netLify/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Win10驱动正常无声音，显示扬声器未插入的解决办法</title>
